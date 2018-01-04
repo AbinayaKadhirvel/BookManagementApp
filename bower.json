@@ -1,17 +1,18 @@
 {
-  "name": "tutorialnodejswithexpress",
-  "description": "A literal follow-up of the tutorial: Building Web Application with NodeJS and Express 4.0 by Jonathan Mills on PluralSight",
-  "main": "app.js",
+  "name": "library",
+  "version":"0.0.0",
   "authors": [
-    "LeontheProfessional"
+    "LeontheProfessional <yanglyu.leon.7@gmail.com>"
   ],
-  "license": "ISC",
-  "homepage": "https://github.com/leontheprofessional7/TutorialBuildingWebWithNodeJSAndExpress4",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies":{
+    "bootstrap":"~3.3.5"
+  }
 }
