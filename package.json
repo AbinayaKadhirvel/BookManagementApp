@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "name": "tutorialnodejswithexpress",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "LeontheProfessional",
+  "license": "ISC",
+  "description": "A literal follow-up of the tutorial: Building Web Application with NodeJS and Express 4.0 by Jonathan Mills on PluralSight"
+}
