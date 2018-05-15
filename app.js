@@ -5,17 +5,20 @@ var morgan = require('morgan');
 var path = require('path');
 // To create an instance of express
 var app = express();
-
 var port = 5000;
 
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(morgan('combined'));
+
+app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist')));
+app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')));
+app.use('/js', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/js')));
+
 app.use(express.static('src/views'));
 
 app.get('/', function (req, res) {
     res.send('Hello World');
 });
 
-app.use(morgan('combined'));
 
 app.get('/books', function (req, res) {
     res.send('Hello Books');
