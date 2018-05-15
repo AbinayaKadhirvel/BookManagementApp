@@ -19,14 +19,13 @@ app.get('/', function (req, res) {
     res.send('Hello World');
 });
 
-
 app.get('/books', function (req, res) {
     res.send('Hello Books');
 });
 
 app.listen(port, function (err) {
     if (err) {
-        debug(err);
+        debug("Server error: " + chalk.red(err));
     } else {
         debug('Running server on port: ' + chalk.green(port));
     }
