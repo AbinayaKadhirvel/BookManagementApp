@@ -1,11 +1,11 @@
-var express = require('express');
-var chalk = require('chalk');
-var debug = require('debug')('app');
-var morgan = require('morgan');
-var path = require('path');
+const express = require('express');
+const chalk = require('chalk');
+const debug = require('debug')('app');
+const morgan = require('morgan');
+const path = require('path');
 // To create an instance of express
-var app = express();
-var port = 5000;
+const app = express();
+const port = 5000;
 
 app.use(morgan('combined'));
 
