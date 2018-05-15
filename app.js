@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const path = require('path');
 // To create an instance of express
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.use(morgan('combined'));
 
