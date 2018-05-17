@@ -4,7 +4,7 @@ module.exports = {
         "linebreak-style": ["error", "windows"],
         "func-names": ["error", "never"],
         "prefer-allow-callback": "error",
-        "indent": ["error", "tab"],
+        "indent": 0,
         "comma-dangle": 0
     }
 };
