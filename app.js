@@ -3,12 +3,25 @@ const chalk = require('chalk');
 const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
+const sql = require('mssql');
+
 // To create an instance of express
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(morgan('combined'));
+const config = {
+    user: 'leon',
+    password: 'Dad19630320',
+    server: 'pslibraryleon.database.windows.net',
+    database: 'PSLibrary',
 
+    options: {
+        encrypt: true   // Use this if you're on Windows Azure
+    }
+};
+sql.connect(config).catch(err => debug(err));
+
+app.use(morgan('combined'));
 app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist')));
 app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')));
 app.use('/css', express.static(path.join(__dirname, '/public/css')));
