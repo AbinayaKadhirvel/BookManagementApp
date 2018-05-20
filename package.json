@@ -36,8 +36,8 @@
     "wiredep": "^4.0.0"
   },
   "scripts": {
-    "start": "set DEBUG=* & nodemon app.js",
-    "start_mac": "DEBUG=app nodemon app.js",
+    "start": "set DEBUG=app,app:* & nodemon app.js",
+    "start_mac": "DEBUG=app,app:* nodemon app.js",
     "lint": "eslint app.js"
   },
   "author": "LeontheProfessional",
