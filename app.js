@@ -4,6 +4,7 @@ const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
 const sql = require('mssql');
+const bodyParser = require('body-parser');
 
 // To create an instance of express
 const app = express();
@@ -16,13 +17,14 @@ const config = {
     database: 'PSLibrary',
 
     options: {
-        encrypt: true   // Use this if you're on Windows Azure
+        encrypt: true // Use this if you're on Windows Azure
     }
 };
 sql.connect(config).catch(err => debug(err));
 
 app.use(morgan('combined'));
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use((req, res, next) => {
     debug('my middleware');
     next();
@@ -41,11 +43,14 @@ const nav = [
     { link: '/authors', title: 'Author' }
 ];
 
-const bookRouter = require('./src/routes/bookRoutes2')(nav);
+const bookRouter = require('./src/routes/bookRoutes')(nav);
 const adminRouter = require('./src/routes/adminRoutes')(nav);
+const authRouter = require('./src/routes/authRoutes')(nav);
 
 app.use('/books', bookRouter);
 app.use('/admin', adminRouter);
+app.use('/auth', authRouter);
+
 app.get('/', (req, res) => {
     res.render(
         'index',
