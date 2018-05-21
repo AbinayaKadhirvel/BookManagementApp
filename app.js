@@ -41,7 +41,7 @@ const nav = [
     { link: '/authors', title: 'Author' }
 ];
 
-const bookRouter = require('./src/routes/bookRoutes')(nav);
+const bookRouter = require('./src/routes/bookRoutes2')(nav);
 const adminRouter = require('./src/routes/adminRoutes')(nav);
 
 app.use('/books', bookRouter);
