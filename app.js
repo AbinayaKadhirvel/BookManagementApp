@@ -5,6 +5,9 @@ const morgan = require('morgan');
 const path = require('path');
 const sql = require('mssql');
 const bodyParser = require('body-parser');
+const passport = require('passport');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 // To create an instance of express
 const app = express();
@@ -25,6 +28,11 @@ sql.connect(config).catch(err => debug(err));
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(session({ secret: 'library' }));
+
+require('./src/config/passport.js')(app);
+
 app.use((req, res, next) => {
     debug('my middleware');
     next();
