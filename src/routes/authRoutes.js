@@ -8,9 +8,16 @@ function router() {
     authRouter.route('/signUp')
         .post((req, res) => {
             debug(req.body);
-            res.json(req.body);
+            // create the user
+            req.login(req.body, () => {
+                res.redirect('/auth/profile');
+            });
         });
-
+    authRouter.route('/profile')
+        .get((req, res) => {
+            debug(req.body);
+            res.json(req.user);
+        });
     return authRouter;
 }
 

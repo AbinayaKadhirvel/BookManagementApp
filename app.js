@@ -33,6 +33,7 @@ app.use(session({ secret: 'library' }));
 
 require('./src/config/passport.js')(app);
 
+app.use(express.static(path.join(__dirname, '/public/')));
 app.use((req, res, next) => {
     debug('my middleware');
     next();
@@ -42,7 +43,6 @@ app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dis
 app.use('/css', express.static(path.join(__dirname, '/public/css')));
 app.use('/fonts', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/fonts')));
 app.use('/js', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/js')));
-
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
