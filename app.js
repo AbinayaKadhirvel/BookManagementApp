@@ -13,18 +13,6 @@ const session = require('express-session');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const config = {
-    user: 'leon',
-    password: 'Dad19630320',
-    server: 'pslibraryleon.database.windows.net',
-    database: 'PSLibrary',
-
-    options: {
-        encrypt: true // Use this if you're on Windows Azure
-    }
-};
-sql.connect(config).catch(err => debug(err));
-
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -70,9 +58,9 @@ app.get('/', (req, res) => {
     );
 });
 
-app.listen(port, (err) => {
+module.exports = app.listen(port, (err) => {
     if (err) {
-        debug('Server error: ' + chalk.red(err));
+        debug(`Server error:  ${chalk.red(err)}`);
     } else {
         debug(`Running server on port: ${chalk.green(port)}`);
     }
