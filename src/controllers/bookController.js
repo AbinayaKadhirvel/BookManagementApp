@@ -39,6 +39,10 @@ function bookController(bookService, nav) {
         });
     }
     function addNewBook(req, res) {
+      if (!req.body.title) {
+        res.status(HttpStatus.BAD_REQUEST);
+        return res.send('Title is required');
+      }
       req.book.title = req.body.title;
       req.book.author = req.body.author;
       req.book.read = req.body.read;
@@ -87,7 +91,6 @@ function bookController(bookService, nav) {
         res.status(HttpStatus.BAD_REQUEST);
         res.send('Title is required');
       } else {
-        newBook.save();
         res.status(HttpStatus.CREATED);
         res.send(newBook);
       }
