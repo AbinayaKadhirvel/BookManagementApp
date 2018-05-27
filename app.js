@@ -58,7 +58,7 @@ app.get('/', (req, res) => {
     );
 });
 
-app.listen(port, (err) => {
+module.exports = app.listen(port, (err) => {
     if (err) {
         debug(`Server error:  ${chalk.red(err)}`);
     } else {
