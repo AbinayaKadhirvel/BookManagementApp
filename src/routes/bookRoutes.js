@@ -4,16 +4,16 @@ const bookRouter = express.Router();
 const debug = require('debug')('app:bookRoutes');
 const bookController = require('../controllers/bookController');
 const bookService = require('../services/goodreadsService');
-
-function router(nav) {
-    const { getIndex, getById, middleware, postNew, addNewBook, updateOneBook, deleteBook } = bookController(bookService, nav);
-    bookRouter.use(middleware);
+const nav = [
+    { link: '/books', title: 'Book' }
+];
+function router() {
+    const { getIndex, getById, postNew, addNewBook, updateOneBook, deleteBook } = bookController(bookService, nav);
     bookRouter.route('/')
         .get(getIndex)
         .post(postNew);
-    bookRouter.route('/:id')
-        .get(getById);
-    bookRouter.route('/:id')
+    bookRouter.route('/:bookId')
+        .get(getById)
         .put(addNewBook)
         .patch(updateOneBook)
         .delete(deleteBook);
